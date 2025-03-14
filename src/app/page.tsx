@@ -15,10 +15,15 @@ const tiers = [
     id: "tier-freelancer",
     href: "#",
     price: { 
-      monthly: 199, 
-      annually: 1990 
+      monthly: {
+        amount: 19,
+        price_id: "price_1QzZ9NEEwDDegOMGA2MLhb5h"
+      },
+      annually: {
+        amount: 190,
+        price_id: "price_1R2SmeEEwDDegOMGEfXG9ktG"
+      }
     },
-    paymentId: "price_1QzZ9NEEwDDegOMGA2MLhb5h",
     description: "The essentials to provide your best work for clients.",
     features: [
       "5 products",
@@ -32,9 +37,14 @@ const tiers = [
     name: "Startup",
     id: "tier-startup",
     href: "#",
-    price: { monthly: 599, annually: 5990 },
+    price: { monthly:{
+      amount: 49,
+      price_id: "price_1QzZ9tEEwDDegOMGoYiqo6HI"
+    }, annually: {
+      amount: 490,
+      price_id: "price_1R2SnlEEwDDegOMG5ON17JMY"
+    } },
     description: "A plan that scales with your rapidly growing business.",
-    paymentId: "price_1QzZ9tEEwDDegOMGoYiqo6HI",
     features: [
       "25 products",
       "Up to 10,000 subscribers",
@@ -48,9 +58,14 @@ const tiers = [
     name: "Enterprise",
     id: "tier-enterprise",
     href: "#",
-    price: { monthly: 999, annually: 9990 },
+    price: { monthly: {
+      amount: 99,
+      price_id: "price_1QzZABEEwDDegOMGmCp18k3h"
+    }, annually: {
+      amount: 990,
+      price_id: "price_1R2SqJEEwDDegOMGn2MhYLCU"
+    } },
     description: "Dedicated support and infrastructure for your company.",
-    paymentId: "price_1QzZABEEwDDegOMGmCp18k3h",
     features: [
       "Unlimited products",
       "Unlimited subscribers",
@@ -78,8 +93,9 @@ export default function Home() {
     const fetchCheckoutUrl = async () => {
       const data = {
         pd_identifier: '9639aa61-9180-43e7-af03-d178ab5a62dd',
+        is_localized: true,
         checkout_data: {
-          line_items: [{"price": tier.paymentId, "quantity": 1}],
+          line_items: [{"price": tier.price[frequency.value as keyof typeof tier.price].price_id, "quantity": 1}],
           mode: "payment",
         },
         success_url: 'https://paritydeals.com'
@@ -112,6 +128,7 @@ export default function Home() {
 
   return (
     <ParityDealsProvider>
+
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
@@ -119,13 +136,11 @@ export default function Home() {
               Pricing
             </h2>
             <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
-              Pricing that grows with you
+              ParityDeals next.js demo
             </p>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
-            Choose an affordable plan that’s packed with the best features for
-            engaging your audience, creating customer loyalty, and driving
-            sales.
+            Demo of using ParityDeals with a next.js app.
           </p>
           <div className="mt-16 flex justify-center">
             <fieldset aria-label="Payment frequency">
@@ -146,6 +161,9 @@ export default function Home() {
               </RadioGroup>
             </fieldset>
           </div>
+          {/* <div className="mt-10">
+            <PDBanner />
+          </div> */}
           <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {tiers.map((tier) => (
               <div
@@ -179,12 +197,51 @@ export default function Home() {
                 <p className="mt-6 flex items-baseline gap-x-1">
                   <span className="text-4xl font-semibold tracking-tight text-gray-900">
                     <PDPriceFormatted
-                      originalPrice={tier.price[frequency.value as keyof typeof tier.price]}
+                      originalPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
                       showDecimal={false}
                       showCurrencyCode={false}
+                      roundTo="up"
                       showCurrencySymbol={true}
-                      convertToLocal={false}
+                      convertToLocal={true}
                     />
+                    <span className="ml-2 text-lg font-semibold text-gray-600">
+                      <PDPriceFormatted
+                        originalPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
+                        displayPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
+                        showDecimal={false}
+                        roundTo="up"
+                        showCurrencyCode={false}
+                        showCurrencySymbol={true}
+                        convertToLocal={true}
+                        isOriginalDisplay={true}
+                      />
+                    </span>
+                    {/* <div className="price-container">
+                      <PDPriceFormatted 
+                        originalPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
+                        showCurrencySymbol={true}
+                        showDecimal={false}
+                        showCurrencyCode={false}
+                        convertToLocal={false}
+                      />
+                      <span className="ml-2"></span>
+                      <PDPriceFormatted 
+                        originalPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
+                        displayPrice={tier.price[frequency.value as keyof typeof tier.price].amount}
+                        isOriginalDisplay={true}
+                        showCurrencySymbol={true}
+                        showDecimal={false}
+                        showCurrencyCode={false}
+                        convertToLocal={false}
+                      />
+                    </div> */}
+                    {/* <div className="custom-price-display">  
+                      <PDPriceCurrencySymbol convertToLocal={true} />
+                      <PDPriceInteger originalPrice={199.99} />
+                      <span className="decimal-separator">.</span>
+                      <PDPriceDecimal originalPrice={199.99} />
+                      <PDPriceCurrencyCode convertToLocal={true} />
+                    </div> */}
                   </span>
                   <span className="text-sm/6 font-semibold text-gray-600">
                     {frequency.priceSuffix}
@@ -219,6 +276,10 @@ export default function Home() {
                 </ul>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 text-center text-sm text-orange-500 max-w-md mx-auto">
+            VPN protection is disabled for the demonstration purpose. Use a VPN to simulate different location to test the pricing.
           </div>
         </div>
       </div>
