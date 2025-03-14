@@ -154,4 +154,5 @@ const getCheckoutUrl = (tier: typeof tiers[0]) => {
 
 ---
 
-**Happy coding!** If you encounter any issues or have questions, please open an [issue](https://github.com/YourUsername/paritydeals-nextjs-demo/issues) or reach out to the ParityDeals community.
+**VPN protection for this project is temporarily disabled. You can use a vpn to simulate different locations**
+
