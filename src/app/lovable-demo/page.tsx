@@ -94,9 +94,6 @@ const scaleTiers = [
     },
 ];
 
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
 
 export default function Pricing() {
     const [isLoading, setIsLoading] = useState(false);
@@ -169,7 +166,7 @@ export default function Pricing() {
                         <h1 className="text-4xl font-semibold mb-4">Pricing</h1>
                         <p className="text-lg text-gray-300">
                             Start for free. Upgrade to get the capacity that exactly matches
-                            your team's needs.
+                            your teams needs.
                         </p>
                     </div>
 
