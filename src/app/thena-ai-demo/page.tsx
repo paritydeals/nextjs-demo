@@ -21,7 +21,7 @@ export default function Pricing() {
             Choose the perfect plan for your team.
           </p>
 
-          <div className="pricing-table-thena mt-10">
+          <div className="pricing-table-thena mt-10 flex justify-center">
             <PDPricingTable
               onCustomPriceClick={() => {
                 console.log("custom price clicked");
