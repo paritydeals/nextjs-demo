@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@paritydeals/react-sdk": "^0.0.5-beta",
+    "@paritydeals/react-ui": "^1.4.1",
     "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -24,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "sass": "^1.93.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
