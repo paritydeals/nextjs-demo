@@ -28,11 +28,6 @@ export default function Pricing() {
               }}
             />
           </div>
-
-          <div className="mt-8 text-center text-sm text-orange-500 max-w-md mx-auto">
-            VPN protection is disabled for the demonstration purpose. Use a VPN
-            to simulate different location to test the pricing.
-          </div>
         </div>
       </div>
     </ParityDealsProvider>
