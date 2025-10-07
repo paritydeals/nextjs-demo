@@ -13,11 +13,11 @@ export default function Pricing() {
       <div className="py-24 sm:py-32 transition-colors">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="mt-2 text-5xl font-semibold tracking-tight text-balance  dark:text-white sm:text-6xl">
+            <p className="mt-2 text-5xl font-semibold tracking-tight text-balance  text-white sm:text-6xl">
               Billing
             </p>
           </div>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty dark:text-gray-300 sm:text-xl/8">
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
             Choose the perfect plan for your team.
           </p>
 
